@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Funcionário - Sinistros Inteligentes</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-lg" style="max-width: 500px; width: 100%;">
+        <div class="text-center">
+            <img src="/odontoPrev.png" alt="Logo" class="img-fluid mb-3" style="max-width: 150px;">
+            <h2 class="mb-3" th:text="${funcionario.id == null ? 'Cadastro de Funcionário' : 'Editar Funcionário'}"></h2>
+            <p class="text-muted">Preencha os dados abaixo para cadastrar ou editar um funcionário.</p>
+        </div>
+        <!-- Formulário para criar/editar funcionário -->
+        <form action="/funcionarios/salvar" method="POST">
+            <!-- Campo para nome -->
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome"  required>
+            </div>
+            <!-- Campo para CPF -->
+            <div class="mb-3">
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf"  required>
+            </div>
+            <!-- Campo para Cargo -->
+            <div class="mb-3">
+                <label for="cargo" class="form-label">Cargo</label>
+                <input type="text" class="form-control" id="cargo" name="cargo"  required>
+            </div>
+            <!-- Campo para Salário -->
+            <div class="mb-3">
+                <label for="salario" class="form-label">Salário</label>
+                <input type="number" class="form-control" id="salario" name="salario"  required>
+            </div>
+            <!-- Campo para Data de Admissão -->
+            <div class="mb-3">
+                <label for="dataAdmissao" class="form-label">Data de Admissão</label>
+                <input type="date" class="form-control" id="dataAdmissao" name="dataAdmissao"  required>
+            </div>
+            <!-- Campo para Telefone -->
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="text" class="form-control" id="telefone" name="telefone" >
+            </div>
+            <!-- Campo para Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email"  required>
+            </div>
+            <!-- Botão de submit -->
+            <button type="submit" class="btn btn-primary w-100">
+                <span th:text="${funcionario.id == null ? 'Cadastrar' : 'Atualizar'}"></span>
+            </button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="/funcionarios" class="btn btn-outline-secondary w-100">Voltar para a lista de funcionários</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
